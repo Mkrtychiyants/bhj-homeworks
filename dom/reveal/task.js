@@ -1,15 +1,18 @@
-let viewPortHeight = window.innerHeight;
+const viewPortHeight = window.innerHeight;
 
-let reviealDivs = document.getElementsByClassName("reveal");
-
-let divTop = reviealDivs[0].getBoundingClientRect().top;
+const reviealDivs = document.getElementsByClassName("reveal");
 
 document.addEventListener("scroll", () => {
     for (let index = 0; index < reviealDivs.length; index++) {
+       
         const element = reviealDivs[index];
-
-        if (element.getBoundingClientRect().top < (viewPortHeight / 2)) {
+        const elementTop = element.getBoundingClientRect().top;
+        
+        if ((elementTop < viewPortHeight) && (elementTop > 0)) {
             element.classList.add("reveal_active");
+        }
+        else {
+            element.classList.remove("reveal_active");
         }
 
     }

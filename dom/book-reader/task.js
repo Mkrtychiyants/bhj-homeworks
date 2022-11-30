@@ -9,13 +9,16 @@ for (let index = 0; index < bkcontrol.length; index++) {
 }
 
 
-function changeFont() {
+function changeFont(e) {
+    e.preventDefault();
     let cds = this;
 
     if (!cds.classList.contains("font-size_active")) {
         document.getElementsByClassName("font-size_active")[0].classList.remove("font-size_active");
-
+        bk.classList.remove("book_fs-big");
+        bk.classList.remove("book_fs-small");
         if (cds.classList.contains("font-size_big")) {
+
             bk.classList.add("book_fs-big");
         }
         if (cds.classList.contains("font-size_small")) {
@@ -24,6 +27,7 @@ function changeFont() {
 
         cds.classList.add("font-size_active");
 
-        return false;
+
     }
+
 }
