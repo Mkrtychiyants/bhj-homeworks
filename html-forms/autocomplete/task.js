@@ -82,20 +82,23 @@ class Autocomplete {
       }
     */
     let resArr = [];
-    let resObj = {};
+
 
     for (let index = 0; index < Array.from(this.input.options).length; index++) {
+
       const element = Array.from(this.input.options)[index];
 
-      if (element.text.includes(text)) {
-        resObj.text = element.text;
+      if (element.textContent.includes(text)) {
+        let resObj = {};
+        resObj.text = element.textContent;
         resObj.value = element.value;
         resArr.push(resObj);
+
       }
 
     }
-
     return resArr;
+
 
   }
 }

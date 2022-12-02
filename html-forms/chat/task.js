@@ -4,6 +4,7 @@ const chatMessages = document.getElementById("chat-widget__messages");
 let dateNow = new Date();
 let hoursNow = dateNow.getHours() < 10 ? `0${dateNow.getHours()}` : `${dateNow.getHours()}`;
 let minutesNow = dateNow.getMinutes() < 10 ? `0${dateNow.getMinutes()}` : `${dateNow.getMinutes()}`;
+let currentWord = "";
 
 chatWidget.onclick = function () {
     chatWidget.classList.add("chat-widget_active");
@@ -11,6 +12,7 @@ chatWidget.onclick = function () {
 chatInput.onkeyup = function (e) {
     if (e.code === "Enter") {
         if (chatInput.value) {
+
             chatMessages.innerHTML +=
                 `<div class="message message_client">
                 <div class="message__time">${hoursNow}:${minutesNow}</div>
@@ -20,12 +22,21 @@ chatInput.onkeyup = function (e) {
             chatMessages.innerHTML +=
                 `<div class="message">
                 <div class="message__time">${hoursNow}:${minutesNow}</div>
-                ${botMessagesArray[Math.floor(getRandomInt(0, 6))]}
+                ${botMessagesArray[checkForRepeat(getRandomInt(0, 6))]}
                 </div>`;
+
         }
     }
 }
 
+
+function checkForRepeat(randomInt) {
+    if (randomInt === currentWord ) {
+        getR(getRandomInt(0, 6));
+    } else {
+        return currentWord  = randomInt;
+    };
+}
 function getRandomInt(min, max) {
     min = Math.ceil(min);
     max = Math.floor(max);
