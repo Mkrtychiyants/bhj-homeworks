@@ -24,16 +24,20 @@ chatInput.onkeyup = function (e) {
                 <div class="message__time">${hoursNow}:${minutesNow}</div>
                 ${botMessagesArray[checkForRepeat(getRandomInt(0, 6))]}
                 </div>`;
-
+                
         }
     }
 }
 
 
 function checkForRepeat(randomInt) {
+
     if (randomInt === currentWord ) {
-        getR(getRandomInt(0, 6));
+        
+        return checkForRepeat(getRandomInt(0, 6));
+        
     } else {
+        
         return currentWord  = randomInt;
     };
 }
